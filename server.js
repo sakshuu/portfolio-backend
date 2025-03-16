@@ -9,21 +9,13 @@ dotenv.config(); // Load environment variables from .env file
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = [
-  'http://localhost:3000', // Local development
-  'https://portfolio-frontend-thm6.onrender.com', // Deployed frontend
-];
-
+// Middleware
+// app.use(cors());
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Optional: Only needed if using cookies/tokens
+  origin: 'https://portfolio-frontend-thm6.onrender.com',
+  credentials: true,
 }));
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL, {
