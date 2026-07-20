@@ -124,7 +124,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend((process.env.RESEND_API_KEY || '').trim());
 
 app.use(cors({
   origin: [
