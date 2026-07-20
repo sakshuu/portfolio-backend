@@ -129,7 +129,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 app.use(cors({
   origin: [
     'https://portfolio-frontend-thm6.onrender.com',
-    'http://localhost:3000',
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
